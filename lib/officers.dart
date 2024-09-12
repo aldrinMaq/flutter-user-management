@@ -7,7 +7,6 @@ class OfficerPage extends StatefulWidget {
   State<OfficerPage> createState() => _OfficerPageState();
 }
 
-// hhfhgf76
 class _OfficerPageState extends State<OfficerPage> {
   @override
   Widget build(BuildContext context) {
@@ -32,7 +31,7 @@ class _OfficerPageState extends State<OfficerPage> {
                     decoration: InputDecoration(
                         filled: true,
                         fillColor: Colors.white,
-                        hintText: 'Input name / user id',
+                        hintText: 'Input name / user id ,',
                         hintStyle: TextStyle(color: Colors.grey)),
                   ),
                 ),
