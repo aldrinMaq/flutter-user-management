@@ -16,7 +16,7 @@ class _OfficerPageState extends State<OfficerPage> {
             'User Management',
             style: TextStyle(color: Colors.white),
           ),
-          backgroundColor: const Color.fromARGB(255, 18, 15, 225)),
+          backgroundColor: const Color.fromARGB(255, 20, 17, 201)),
       body: Column(
         children: [
           Padding(
@@ -39,7 +39,7 @@ class _OfficerPageState extends State<OfficerPage> {
                 ElevatedButton(
                   onPressed: () {},
                   style: ElevatedButton.styleFrom(
-                      backgroundColor:  const Color.fromARGB(255, 18, 15, 225),
+                      backgroundColor: const Color.fromARGB(255, 18, 15, 225),
                       foregroundColor: Colors.white,
                       shape: const RoundedRectangleBorder(
                         borderRadius: BorderRadius.all(Radius.circular(5)),
