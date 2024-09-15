@@ -8,6 +8,12 @@ class OfficerPage extends StatefulWidget {
 }
 
 class _OfficerPageState extends State<OfficerPage> {
+  List<Map<String, dynamic>> users = [
+    {'name': 'Aldrin A. Maquiling', 'role': 'Officer'},
+    {'name': 'Krisia Helena May C. Octal', 'role': 'Officer'},
+    {'name': 'Michell Lubrio', 'role': 'Officer'},
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,62 +75,47 @@ class _OfficerPageState extends State<OfficerPage> {
                   style: TextStyle(fontWeight: FontWeight.bold),
                 )),
               ],
-              rows: const [
-                DataRow(
+              rows: users.map((user) {
+                return DataRow(
                   cells: [
-                    DataCell(Text('Aldrin A. Maquiling')),
-                    DataCell(Text('Officer')),
+                    DataCell(Text(user['name'])),
+                    DataCell(Text(user['role'])),
                     DataCell(Row(
                       children: [
-                        Icon(
-                          Icons.settings,
-                          color: Colors.grey,
+                        PopupMenuButton<String>(
+                          icon: const Icon(
+                            Icons.settings,
+                            color: Colors.grey,
+                          ),
+                          onSelected: (String? newValue) {
+                            setState(() {
+                              user['role'] = newValue;
+                            });
+                          },
+                          itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
+                            const PopupMenuItem<String>(
+                              value: 'Admin',
+                              child: Text('Admin'),
+                            ),
+                            const PopupMenuItem<String>(
+                              value: 'Officer',
+                              child: Text('Officer'),
+                            ),
+                            // const PopupMenuItem<String>(
+                            //   value: 'User',
+                            //   child: Text('User'),
+                            // ),
+                          ],
                         ),
-                        Icon(
+                        const Icon(
                           Icons.close,
                           color: Colors.red,
                         ),
                       ],
                     )),
                   ],
-                ),
-                DataRow(
-                  cells: [
-                    DataCell(Text('Krisia Helena May C. Octal')),
-                    DataCell(Text('Officer')),
-                    DataCell(Row(
-                      children: [
-                        Icon(
-                          Icons.settings,
-                          color: Colors.grey,
-                        ),
-                        Icon(
-                          Icons.close,
-                          color: Colors.red,
-                        ),
-                      ],
-                    )),
-                  ],
-                ),
-                DataRow(
-                  cells: [
-                    DataCell(Text('Michell Lubrio')),
-                    DataCell(Text('Officer')),
-                    DataCell(Row(
-                      children: [
-                        Icon(
-                          Icons.settings,
-                          color: Colors.grey,
-                        ),
-                        Icon(
-                          Icons.close,
-                          color: Colors.red,
-                        ),
-                      ],
-                    )),
-                  ],
-                ),
-              ],
+                );
+              }).toList(),
             ),
           ),
         ],
