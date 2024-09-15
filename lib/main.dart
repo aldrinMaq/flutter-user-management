@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'officers.dart';
+import 'pages/user_management.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,15 +11,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const MainScreen(),
+      home: MainScreen(),
     );
   }
 }
 
 class MainScreen extends StatefulWidget {
-  const MainScreen({Key? key}) : super(key: key);
+  const MainScreen({super.key});
 
   @override
   _MainScreenState createState() => _MainScreenState();
@@ -29,9 +29,10 @@ class _MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
 
   static const List<Widget> _widgetOptions = <Widget>[
-    OfficerPage(),
+    Text('Home'),
     Text('Events'),
     Text('Map'),
+    UserManagement(),
     Text('Profile'),
   ];
 
@@ -63,14 +64,32 @@ class _MainScreenState extends State<MainScreen> {
             label: 'Map',
           ),
           BottomNavigationBarItem(
+            icon: Icon(Icons.people),
+            label: 'Manage',
+          ),
+          BottomNavigationBarItem(
             icon: Icon(Icons.person),
             label: 'Profile',
           ),
         ],
+        backgroundColor: const Color.fromARGB(255, 20, 17, 201),
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.blue,
+
+        // Set the selected item color to white
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.white70, // Slightly dimmed color for unselected items
+
+        // Bold icon and text when selected
+        selectedLabelStyle: const TextStyle(fontWeight: FontWeight.bold),
+        unselectedLabelStyle: const TextStyle(fontWeight: FontWeight.normal),
+
+        // Set bold icon when selected using IconTheme
+        selectedIconTheme: const IconThemeData(size: 30, color: Colors.white),
+        unselectedIconTheme: const IconThemeData(size: 24, color: Colors.white70),
+
         onTap: _onItemTapped,
       ),
+
     );
   }
 }
